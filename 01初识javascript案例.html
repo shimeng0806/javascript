@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8"/>
+	<title>运算案例</title>
+	<link rel="stylesheet" href="css/初识js.css"/>
+	<style type="text/css">
+		.text {
+	width: 300px;
+	height: 150px;
+	border: 1px solid black;
+	margin: 20px;
+	float: left;
+}
+	#results {
+	width: 300px;
+	height: 200px;
+	border: 1px solid #000;
+	float: left;
+}
+	</style>
+</head>
+<body>
+	<!-- 1.	输入自己的姓名、身高、体重。计算自己的BMI指数 
+			体质指数（BMI）=体重（kg）÷身高^2（m）  
+			当BMI指数为18.5～23.9时属正常。
+			思路：
+				1，初始化变量
+				2，算出BMI指数
+				3，给#results添加.onclick事件
+				4，用.innerHTML方法输出
+
+
+	-->
+
+	<div class="text">
+		<span>请输入您的姓名：</span><input type="text" id="userName"/><br/>
+		<span>请输入您的体重：</span><input type="text" id="userWeight" placeholder="单位：kg"/><br/>
+		<span>请输入您的身高：</span><input type="text" id="userHeight" placeholder="单位：米"/><br/>
+		<button id="btn">B M I</button>
+	</div>
+
+	<div id="results"></div>
+
+
+
+
+
+
+<script>
+	(function() {
+	var userName = document.getElementById("userName");
+	var userWeight = document.getElementById("userWeight");
+	var userHeight = document.getElementById("userHeight");
+	var btn = document.getElementById("btn");
+	var results = document.getElementById("results");
+	btn.value = userWeight.value / ( userHeight.value * userHeight.value);
+	console.log(btn.value);
+	var reslut;
+	if (btn.value < 18.5) {
+		reslut = "偏瘦";
+	} else if (18.5 < btn.value < 23.9) {
+		reslut = "标准";
+	} else {
+		reslut = "胖了，该减肥了";
+	}
+	// var reslut = (btn.value < 18.5) ? "偏瘦" : (18.5 < btn.value < 23.9)  ? "标准" : "胖了，该减肥了"
+	btn.onclick = function () {
+		console.log(typeof userName, userWeight, userHeight, btn, results);
+		results.innerHTML = "您的姓名是："+ userName.value+ ",<br />体重是： "+ userWeight.value + "kg,<br />身高是：" + userHeight.value + "m<br /> 当前B M I 指数为：" + btn.value + ",<br />您的身体指数是：" + reslut;
+	}
+	})();
+	
+
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM和Document和node的案例</title>
+</head>
+<body>
+	<h3>
+三、	简答题
+1.	简述什么是dom？什么是document？
+2.	简述setAttribute和setAttributeNode方法的区别
+3.	对于querySelector系列方法和getElementBy系列的方法，两者之间有什么区别？
+4.	简述什么是节点，什么是节点树？为什么要存在节点树？
+5.	简述在通过js编写页面结构的时候，都需要注意什么？
+6.	谈谈你觉得dom创建添加元素的方式和innerHTML方式有什么区别？优缺点呢？
+
+四、	编程题
+1.	编写数据展示模块，要求：
+a)	页面中ul最初没有数据
+b)	用户输入数据，点击添加数据按钮后在ul中添加一行数据。
+c)	如果用户输入的数据为空，提示用户数据不完全，不能添加。
+ 
+2.	通过dom，编写一个带有hover样式的导航栏（鼠标悬停会改变背景色和文字颜色）。
+3.	已知存在一个数据对象stuObj，内容是：
+var stuObj = {
+	name:[‘李雷’,’韩梅梅’,’露西’,’莉莉’,’波利’]，
+	age:[12,12,11,10,3]
+}
+要求：通过js在页面中创建ul列表。将对象中的数据按【照图中的形式】进行展示。
+ 
+4.使用js代码编写【百度图片】页面
+</h3>
+<h4>
+	尝试阅读代码，并理解下列代码的含义
+</h4>
+<div class="canvas"></div>
+<script>
+    var zbxArr = [];
+    var frag = document.createDocumentFragment();
+    for(var i=0; i<20; i++){
+        var oneArr = [];
+        for(var j=0; j<20; j++){
+            var div = document.createElement('div');
+            div.style.position = 'absolute';
+            div.style.left = j*20+'px';
+            div.style.top = i*20+'px';
+            div.style.width = '20px';
+            div.style.height = '20px';
+            div.style.background = 'black';
+            frag.appendChild(div);
+            oneArr.push(div);
+        }
+        zbxArr.push(oneArr);
+    }
+document.querySelector('.canvas').appendChild(frag);
+</script>
+i = 1
+j = 1
+
+	<ul class="ul1">
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+	</ul>
+<!-- 1.	已知页面代码为： -->
+<span>sxt Web前端学院</span>
+<script type="text/javascript">
+	//1，控制页面标题title的滚动效果，用定时器
+	setInterval(function() {
+		var docTitle = document.title;
+		//切割数组成字符串
+		var titleArr = docTitle.split('');
+		//把数组的第一位删除，并加到数组的最后面
+		titleArr.push(titleArr.shift());
+		//把数组重新合成字符串
+		var newArr = titleArr.join('');
+		//重新设置页面
+		document.title = newArr;
+
+	}, 100)
+
+//querySelectorAll()	返回的是一个静态列表；
+var ul = document.querySelectorAll('ul')[0];
+var list = ul.querySelectorAll('li');
+for (var i = 0; i < list.length; i++) {
+	ul.appendChild(document.createElement('li'));
+}
+/*//通过getElemenet系列方法得到的列表，会随内容的变化而立即产生变化，称为动态节点列表
+var ul = document.querySelectorAll('ul')[0];
+var list = ul.docuement.getElementsByTagName('li');
+for (var i = 0; i < list.length; i++) {
+	ul.appendChild(document.createElement('li'));
+}*/
+
+//使用三种方法，对span标签进行字体颜色和大小的设置 _____、_____、______
+ var span1 = document.querySelector('span');
+
+//方法1、
+// span1.style.cssText = 'font-size:12px;color:blue;';
+//方法2、
+/*var style1 = document.createAttribute("style");
+console.log(style1);
+span1.setAttributeNode(style1);
+
+style1.value = "font-size:12px; color='blue';";*/
+// var style1 = span1.createAttribute("style");
+//    span1.setAttributeNode(style1);
+// style1.value = 'font-size:12px;color:blue;';
+//方法3、
+span1.setAttribute("style", "font-size:12px; color:blue;");
+
+</script>
+</body>
+</html>

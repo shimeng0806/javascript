@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>二级和三级联动</title>
+	<style type="text/css">
+		select {
+			width: 200px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+<!--
+ 三级联动的前置知识点：
+（1）select元素的option创建方式：【var option = new Option("想要显示的内容");】
+（2）select元素中添加option方式：【select.options.add(新创建的option);】
+（3）select元素清空所有的option方式：【select.options.length = 0;】
+（4）select元素改变触发的事件：【select.onchange = function () {};】
+（5）select元素当前选中的option的序号：【select.selectedIndex】, 从0开始。
+-->
+<span>省：</span>
+<select id="sheng">
+	<option>请选择</option>	
+</select>
+<span>市：</span>
+<select id="shi">
+	<option>请选择</option>	
+</select>
+<span>区：</span>
+<select id="qu">
+	<option>请选择</option>	
+</select>
+
+
+<script type="text/javascript">
+
+	//构建数据源
+	var shengArr = ["河北省", "河南省", "湖南省", "湖北省"];
+	var shiArr = [["唐山市", "迁安市"], ["河南1市", "河南2市", "河南3市"], ["湖南1市", "湖南2市", "湖南3市"], [ "湖北1市", "湖北2市"]];
+	var quArr = [
+	[["丰南区", "唐海县", "黑沿子区"], ["野鸡坨县", "迁安1区", "迁安2区"]],
+	[["河南01市", "河南02市", "河南03市"], ["河南001市", "河南002市", "河南003市"], ["河南0001市", "河南0002市", "河南0003市"]],
+	[["湖南01市", "湖南02市", "湖南03市"], ["湖南001市", "湖南002市", "湖南003市"], ["湖南0001市", "湖南0002市", "湖南0003市"]],
+	[["湖北01市", "湖北02市"], ["湖北001市", "湖北002市"]]
+	];
+	//表示第几个省，默认从第一个【请选择】
+	var allIndex = 0;
+	//页面加载时，预先添加省的select内容
+	for (var i = 0; i < shengArr.length; i++) {
+		var shengOption = new Option(shengArr[i]);
+		myId("#sheng").options.add(shengOption);
+	}
+	//省元素改变的触发事件onchange
+	myId("#sheng").onchange = function (eve) {
+		//获取选择省数组中真正的坐标【从0开始】
+		allIndex = eve.target.selectedIndex - 1;
+		console.log(shengArr[allIndex]);
+		
+		//如果用户选到（请选择）的话，也就是坐标为-1，进行判断
+		if (allIndex == -1) {
+			//如果用户选择了请选择则无条件清空
+			myId("#shi").options.length = 0;
+			myId("#qu").options.length = 0;
+		}else {
+			//添加市之前，先清空市的内容；（避免内容堆积）
+			myId("#shi").options.length = 0;
+			//添加区之前，先清空区的内容；
+			myId("#qu").options.length = 0;
+			//根据省的序号加载市的内容【这个选择的省有多少个市，就加载多少个option】
+			for (var j = 0; j <shiArr[allIndex].length; j++ ) {
+				var shiOption = new Option(shiArr[allIndex][j]);
+				myId("#shi").options.add(shiOption);
+			}
+		}
+		//还要跟随加载这个第一个市的区（默认选择）
+		for (var k = 0; k < quArr[allIndex][0].length; k++) {
+			var quOption = new Option(quArr[allIndex][0][k]);
+			console.log(quArr[allIndex][0][k]);
+			myId("#qu").options.add(quOption);
+		}
+	};
+	//市元素改变的触发事件onchange
+	myId("#shi").onchange = function (eve) {
+		//找到选中的市
+		var shiIndex = eve.target.selectedIndex;
+		//添加区内容之前先清空原有内容；
+		myId("#qu").options.length = 0;
+		//找到选中市所对应的区
+		//给区加载select事件option
+		for (var m = 0; m < quArr[allIndex][shiIndex].length; m++) {
+			var quOption = new Option(quArr[allIndex][shiIndex][m]);
+			myId("#qu").options.add(quOption);
+		}
+	};
+
+
+	function myId(id) {
+		return document.querySelector(id);
+	}
+</script>
+</body> 
+
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件应用案例</title>
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+		#numberShow {
+			width: 20px;
+			height: 20px;
+			background-color: #000;
+			position: absolute;
+			left: 122px;
+			top: 92px;
+			color: #fff;
+			margin-left: 50px;
+		}
+		#div2 {
+			width: 800px;
+			height: 500px;
+			position: relative;
+			background-color: red;
+			margin: 100px;
+		}
+		#div3, #div4{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top:150px;
+			
+		}
+		#div3{
+			background-color: #fff;
+			left: 300px;
+		}
+		#div4 {
+			background-color: black;
+		}
+		/*案例五，放大镜效果*/
+		.divone {
+			width: 1200px;
+			height: 800px;
+			border: 1px solid red;
+		}
+		.divone #divl {
+			width: 400px;
+			height: 400px;
+			background-color: black;
+			position: relative;
+			color: #fff;
+			font-size: 28px;
+			float: left;
+		}
+		.divone #divl #divSmall {
+			width: 100px;
+			height: 100px;
+			background-color: rgba(65, 65, 165, 0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+		.divone #divr {
+			width: 400px;
+			height: 400px;
+			float: left;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.divone #divr span {
+			display: none;
+			width: 800px;
+			height: 800px;
+			background-color: #000;
+			color: #fff;
+			font-size: 49px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+<h3>
+	四、	编程题<br/>
+1.	编写日记本样式模块，要求：
+a)	点击1按钮时，页面为黑色边框。1按钮在最上层，2按钮次之。
+b)	点击2按钮时，页面为橘色边框。2按钮在最上层,
+c)	点击3按钮时，页面为绿色边框。3按钮在最上层，1按钮次之<br/>
+ 
+2.	编写程序，实现长按事件。
+	长按事件：鼠标在某个元素上按下超过多少秒才执行的事件，称为长按事件<br/>
+3. （扩展）编写游戏flappy bird，要求:
+a)	实现点击鼠标时，鸟能向上跃动,
+b)	实现不点击鼠标时，鸟会按照某种速度下坠,
+c)	实现当鸟撞击障碍是游戏结束。<br/>
+三、	简答题<br/>
+1.	简述如何处理文档事件中的兼容性问题？为什么要采用这种写法？
+2.	简述当为元素添加滚动事件时需要注意哪些问题？用代码说明,
+3.	简述keydown和keypress事件的区别,
+4.	事件对象和触摸对象有什么区别？
+5.	（扩展）window和document到底有什么区别？<br/>
+
+四、	编程题<br/>
+1.	创建用户登陆表单。要求当用户按下capslock按键的时候，输入框上方提示用户已打开大写锁定。<br/>
+ 
+2.	创建小说阅读页面。要求：
+		在页面中直接按【上下】按键能够进行页面的上下滚动,
+		在页面中直接按【左右】按键能够进行页面之间的跳转（上一章或下一章）<br/>
+3. 编写游戏【微信飞机大战】飞机移动模块<br/>
+	           
+4. 编写回到顶部功能模块:
+	a)	点击按钮，能够让页面滑到顶部,
+	b)	页面如果没有滚动超过500则按钮不出现。只有滑动超过500时按钮才出现。<br/>
+
+5. 编写注册用户页面如图所示，要求：
+	a)如果存在不正确输入的信息，则按钮不可以被点击,
+	b)验证码可以点击一次，随机生成一个,
+	c)用户输入的信息必须在元素失去焦点后立即判断正确还是错误,
+	d)若非合法输入，则input边框和提示文字均为红色。
+若合法输入，则input边框和提示文字为绿色
+
+</h3>
+<div class="div1"></div>
+
+<!-- 案例四，图片验证案例 -->
+<div id="div2">
+	<div id="div3"></div>
+	<div id="div4"></div>
+</div>
+<!-- 案例五，放大镜效果图 -->
+<div class="divone">
+	<div id="divl">5. 编写注册用户页面如图所示，要求：
+					a)如果存在不正确输入的信息，则按钮不可以被点击,
+					b)验证码可以点击一次，随机生成一个,
+					c)用户输入的信息必须在元素失去焦点后立即判断正确还是错误,
+					d)若非合法输入，则input边框和提示文字均为红色。
+					若合法输入，则input边框和提示文字为绿色
+		<div id="divSmall"></div>
+	</div>
+	<div id="divr">
+		<span>5. 编写注册用户页面如图所示，要求：
+				a)如果存在不正确输入的信息，则按钮不可以被点击,
+				b)验证码可以点击一次，随机生成一个,
+				c)用户输入的信息必须在元素失去焦点后立即判断正确还是错误,
+				d)若非合法输入，则input边框和提示文字均为红色。
+				若合法输入，则input边框和提示文字为绿色
+		</span>
+	</div>
+</div>
+
+<!-- 案例1，带有提示的滑动模块 -->
+
+<!-- <span>你的大脑智商：</span><input type="range" min="0" max="100" value="50"/>
+<div id="numberShow">0</div> -->
+<script type="text/javascript">
+
+/*//获取到input标签
+var input1 = document.querySelector('input');
+//获取到div标签
+var div1 = document.querySelector('#numberShow');
+//创建标志位，false的时候move函数不执行，默认false
+var flag = false;
+
+
+//创建移动事件
+function move() {
+	if(flag) {
+		console.log('(x+y):('+ event.clientX + ',' + event.clientY + ')');
+		var left = event.clientX;
+		if(left <175) {
+			left = 175;
+		}
+		if (left > 289) {
+			left = 289;
+		}
+		div1.style.left = left + 'px';
+	}
+	
+}
+function down() {
+	flag = true;
+}
+function up() {
+	flag = false;
+}
+
+//dom2级绑定移动事件
+input1.addEventListener('mousemove', move);
+input1.addEventListener('mousedown', down);
+input1.addEventListener('mouseup', up);
+*/
+
+
+ // 案例二，带有hover样式的导航栏 
+/*
+var ul = document.createElement('ul');
+document.body.appendChild(ul);
+console.log(ul);
+ul.style.listStyle = 'none';
+var titleArr = ['首页', '视频', '音乐', '游戏'];
+for (var i = 0; i < titleArr.length; i++) {
+	var li = document.createElement('li');
+	li.style.cssText = 'width: 80px; height: 30px; line-height: 30px; text-align: center; background-color: blue; display: inline-block;';
+	li.innerHTML = titleArr[i];
+	//把每个li追加到ul中去
+	ul.appendChild(li);
+
+	//给每个li添加鼠标进入和移除事件
+	// this表示在函数使用，谁调用了函数，this就是谁
+	li.onmouseenter = function () {
+		this.style.backgroundColor = 'orange';
+	};
+	li.onmouseleave = function () {
+		this.style.backgroundColor = 'blue';
+	};
+	*/
+	
+// }
+//案例三，div按下后跟随鼠标移动
+//获取div
+// var div = document.querySelector(".div1");
+// var flag1 = false;//只有是true时才能移动
+// div.style.cssText = "width: 100px; height: 100px; background-color: red; position: absolute; ";
+// //给div添加鼠标按下和松开事件
+// div.onmousedown = function () {
+// 	flag1 = true;
+// 	console.log("按下了");
+// };
+// document.onmouseup = function () {
+// 	flag1 = false;
+// 	console.log("松开了");
+// };
+// //给鼠标添加移动事件（只有按下时，才能移动）
+// document.onmousemove = function () {
+// 	if (flag1 == true) {
+// 		div.style.left = event.clientX-50 + 'px';
+// 		div.style.top = event.clientY-50 + 'px';
+// 	}
+// };
+
+// =====================================================================================================
+//案例四，图片验证
+/*
+思路：
+	1,先写事件
+	2，添加开关和判断的次数
+	3，再添加细节，如范围
+*/
+
+var div2 = document.getElementById('div2');
+var div4 = document.getElementById('div4');
+var flag2 = false;//表示开关，false时不能拖动，true时能拖动
+var clickValue = true;//表示次数，因为验证点击一次，所一需要个次数
+//鼠标按下事件
+div4.onmousedown = function () {
+	if (clickValue) {
+		flag2 = true;
+	}	
+};
+//鼠标拖动事件(在div2上拖动)
+div2.onmousemove = function (eve) {
+	if (flag2) {
+		var moveLeft = eve.clientX;
+		if (moveLeft < 200) {
+			moveLeft = 200;
+		}
+		if (moveLeft > 800) {
+			moveLeft = 800;
+		}
+		div4.style.left = moveLeft - 200  + 'px';
+	}
+
+};
+//鼠标松开事件(松开时的位置在div2上)
+div2.onmouseup = function () {
+	if (clickValue) {
+		flag2 = false;
+		var div4Left = parseInt(div4.style.left);
+		console.log(div4Left);
+		if (div4Left >= 280 && div4Left <= 310) {
+			alert("验证成功");
+		}else {
+			alert("验证失败");
+		}
+	}
+	clickValue = false;
+};
+//=================================================================
+//案例五，放大镜效果
+var divl = document.getElementById("divl");
+var divSmall = document.getElementById("divSmall");
+var divr = document.getElementById("divr");
+var textSpan = document.getElementsByTagName("span")[0];
+//鼠标在哪个元素上移动，就给哪个添加鼠标移动事件
+divl.onmousemove = function(e) {
+	var eve = e || window.event; //兼容事件的获取
+	var mouseLeft = eve.clientX;
+	var mouseTop = eve.clientY;
+	if(mouseLeft < 50) {
+		mouseLeft = 50;
+	}
+	if(mouseLeft > 350) {
+		mouseLeft = 350;
+	}
+	if(mouseTop < 50) {
+		mouseTop = 50;
+	}
+	if(mouseTop > 350) {
+		mouseTop = 350;
+	}
+	
+	divSmall.style.left = mouseLeft - 50 + "px";
+	divSmall.style.top = mouseTop - 50 + "px";
+
+	//放大效果图
+	textSpan.style.left = (-2) * mouseLeft + 100  + "px";
+	textSpan.style.top = (-2) * mouseTop + 100 + "px";
+	//鼠标移入时显示
+	divSmall.style.display = "block";
+	textSpan.style.display = "block";
+};
+//鼠标移除时隐藏
+divl.onmouseout = function () {
+	divSmall.style.display = "none";
+	textSpan.style.display = "none";
+};
+//=========================================================================
+</script>
+</body>
+</html>
